@@ -8,12 +8,13 @@ All users will need an account, which are divided into admin and staff. There wi
 
 ## API
 
-The API I will be using is
+The API used for this site is
 
 ## Database
 
 The tables will include: `students`, `parents`, `courses`, `billing`, `scores`.
 
+<br><hr><br>
 
 ### Official Documentation
 
