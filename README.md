@@ -1,3 +1,4 @@
+####Jessica Shin &nbsp;|&nbsp; [ITP-405 Final Project](http://itpweb.herokuapp.com/assignments/405-final-project)
 # Laravel Student Records Database
 
 This site manages the student records of a tutoring and test prep institution. These records include contact and billing information as well as test scores and course enrollment. The users will include administrative staff and instructors.
@@ -8,7 +9,7 @@ All users will need an account, which are divided into admin and staff. There wi
 
 ## API
 
-The API used for this site is
+The API used for this site is Flickr, used to grab and load images.
 
 ## Database
 
