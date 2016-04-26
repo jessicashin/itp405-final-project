@@ -8,18 +8,30 @@
 @section('content')
 
     <div class="container">
-            <form action="/student" method="get" class="search-form">
-                <h2 class="search-form-heading">Search for a student</h2>
-                <div class="form-group">
-                    <label for="student" class="sr-only">Student Name or ID</label>
-                    <select class="form-control combobox" id="student" name="student" onchange="this.form.submit()">
-                        <option></option>
-                        <?php foreach ($students as $student) : ?>
-                            <option value="<?php echo $student->id ?>"><?php echo $student->id . ' ' .$student->name() ?></option>
-                        <?php endforeach; ?>
-                    </select>
+
+        <form action="/student" method="get" class="search-form">
+            <h2 class="search-form-heading">Search for a student</h2>
+
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
                 </div>
-            </form>
+            @endif
+
+            <div class="form-group">
+                <label for="student" class="sr-only">Student Name or ID</label>
+                <select class="form-control combobox" id="student" name="student" onchange="this.form.submit()">
+                    <option></option>
+                    @foreach ($students as $student)
+                        <option value="{{$student->id}}">{{$student->id}} {{$student->name()}}</option>
+                    @endforeach;
+                </select>
+                <span id="helpBlock" class="help-block">You can search by name or student ID number.</span>
+            </div>
+        </form>
+
     </div> <!-- /container -->
 
 @endsection
@@ -29,5 +41,8 @@
         $(document).ready(function(){
             $('.combobox').combobox();
         });
+    </script>
+    <script>
+        $('div.alert').delay(3000).slideUp(300);
     </script>
 @endsection

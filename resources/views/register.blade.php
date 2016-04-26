@@ -12,6 +12,13 @@
             <div class="container-fluid">
                 <h2 style="text-align: center;">Register New Student</h2>
                 <hr>
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}
+                        @endforeach
+                    </div>
+                @endif
                 <div class="form-group">
                     <label for="s_fname" class="control-label col-sm-3"><span class="required">*</span> First Name</label>
                     <div class="col-sm-9">
@@ -57,9 +64,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="s_grade" name="s_grade">
                             <option></option>
-                            <?php for($i = 3; $i <= 12; $i++) { ?>
-                                <option value="<?php echo $i ?>"><?php echo $i ?></option>
-                            <?php } ?>
+                            @for ($i = 3; $i <= 12; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
                         </select>
                     </div>
                 </div>
@@ -68,9 +75,9 @@
                     <div class="col-sm-9">
                         <select class="form-control combobox" id="s_school" name="s_school">
                             <option></option>
-                            <?php foreach ($schools as $school) : ?>
-                                <option value="<?php echo $school->id ?>"><?php echo $school->name ?></option>
-                            <?php endforeach; ?>
+                            @foreach ($schools as $school)
+                                <option value="{{ $school->id }}">{{ $school->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -108,9 +115,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="s_first_language" name="s_first_language">
                             <option></option>
-                            <?php foreach ($firstLanguages as $firstLanguage) { ?>
-                                <option value="<?php echo $firstLanguage->id ?>"><?php echo $firstLanguage->name ?></option>
-                            <?php } ?>
+                            @foreach ($firstLanguages as $firstLanguage)
+                                <option value="{{ $firstLanguage->id }}">{{ $firstLanguage->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -119,9 +126,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="s_ethnicity" name="s_ethnicity">
                             <option></option>
-                            <?php foreach ($ethnicities as $ethnicity) { ?>
-                                <option value="<?php echo $ethnicity->id ?>"><?php echo $ethnicity->name ?></option>
-                            <?php } ?>
+                            @foreach ($ethnicities as $ethnicity)
+                                <option value="{{ $ethnicity->id }}">{{ $ethnicity->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -136,9 +143,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="p1_title" name="p1_title">
                             <option></option>
-                            <?php foreach ($titles as $title) { ?>
-                                <option value="<?php echo $title->id ?>"><?php echo $title->name ?></option>
-                            <?php } ?>
+                            @foreach ($titles as $title)
+                                <option value="{{ $title->id }}">{{ $title->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -159,9 +166,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="p1_relationship" name="p1_relationship">
                             <option></option>
-                            <?php foreach ($relationshipTypes as $relationshipType) { ?>
-                                <option value="<?php echo $relationshipType->id ?>"><?php echo $relationshipType->name ?></option>
-                            <?php } ?>
+                            @foreach ($relationshipTypes as $relationshipType)
+                                <option value="{{ $relationshipType->id }}">{{ $relationshipType->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -200,9 +207,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="p1_state" name="p1_state">
                             <option></option>
-                            <?php foreach ($states as $state) { ?>
-                                <option value="<?php echo $state->id ?>"><?php echo $state->name ?></option>
-                            <?php } ?>
+                            @foreach ($states as $state)
+                                <option value="{{ $state->id }}">{{ $state->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -238,9 +245,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="p2_title" name="p2_title">
                             <option></option>
-                            <?php foreach ($titles as $title) { ?>
-                                <option value="<?php echo $title->id ?>"><?php echo $title->name ?></option>
-                            <?php } ?>
+                            @foreach ($titles as $title)
+                                <option value="{{ $title->id }}">{{ $title->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -261,9 +268,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="p2_relationship" name="p2_relationship">
                             <option></option>
-                            <?php foreach ($relationshipTypes as $relationshipType) { ?>
-                                <option value="<?php echo $relationshipType->id ?>"><?php echo $relationshipType->name ?></option>
-                            <?php } ?>
+                            @foreach ($relationshipTypes as $relationshipType)
+                                <option value="{{ $relationshipType->id }}">{{ $relationshipType->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -302,9 +309,9 @@
                     <div class="col-sm-9">
                         <select class="form-control" id="p2_state" name="p2_state">
                             <option></option>
-                            <?php foreach ($states as $state) { ?>
-                                <option value="<?php echo $state->id ?>"><?php echo $state->name ?></option>
-                            <?php } ?>
+                            @foreach ($states as $state)
+                                <option value="{{ $state->id }}">{{ $state->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -336,7 +343,7 @@
 
                 <div class="form-group" style="margin-top: 30px">
                     <div class="col-sm-offset-3 col-sm-9">
-                        <button type="submit" class="btn btn-default btn-lg">Register</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
                     </div>
                 </div>
                 <div class="form-group" style="margin-top: 30px">
@@ -349,6 +356,7 @@
     </div>
 
 @endsection
+
 
 @section('page-js')
     <script type="text/javascript">

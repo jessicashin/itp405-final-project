@@ -47,7 +47,7 @@
     <footer class="footer">
         <div class="footer-container container text-center">
             <p class="text-muted">
-                <span class="footer-text">25 April 2016</span>
+                <span class="footer-text">26 April 2016</span>
                 <span class="footer-text">Jessica Shin</span>
                 <span class="footer-text">ITP-405 Final Project</span>
             </p>
