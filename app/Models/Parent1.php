@@ -18,10 +18,17 @@ class Parent1 extends Model
         'progress_report'
     ];
 
+    public function name() {
+        if ($this->title != null) {
+            return $this->title->name . ' ' . $this->fname . ' ' . $this->lname;
+        } else {
+            return $this->fname . ' ' . $this->lname;
+        }
+    }
+
     public function title() {
         return $this->belongsTo('App\Models\Lookup\Title');
     }
-
     public function address() {
         return $this->belongsTo('App\Models\Address');
     }

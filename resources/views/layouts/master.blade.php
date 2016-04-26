@@ -26,7 +26,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" style="margin-right: 5px;">StuReg</a>
+            <a class="navbar-brand" href="/search" style="margin-right: 5px;">StuReg</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -46,7 +46,7 @@
 <footer class="footer">
     <div class="footer-container container text-center">
         <p class="text-muted">
-            <span class="footer-text">23 April 2016</span>
+            <span class="footer-text">25 April 2016</span>
             <span class="footer-text">Jessica Shin</span>
             <span class="footer-text">ITP-405 Final Project</span>
         </p>
@@ -58,6 +58,8 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/js/bootstrap-select.min.js"></script>
+
+@yield('page-js')
 
 </body>
 </html>
