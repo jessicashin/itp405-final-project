@@ -1,0 +1,18 @@
+.register-form {
+    max-width: 550px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.required {
+    color: red;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    margin: 40px 0;
+    /* Set the hr color */
+    color: #bababa; /* old IE */
+    background-color: #bababa; /* Modern Browsers */
+}

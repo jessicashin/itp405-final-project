@@ -29,6 +29,6 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     Route::get('/search', 'StudentController@search');
     Route::get('/student', 'StudentController@show');
-    Route::get('/students/register', 'StudentController@create');
-    Route::post('/students/register', 'StudentController@store');
+    Route::get('/register', 'StudentController@create');
+    Route::post('/register', 'StudentController@store');
 });

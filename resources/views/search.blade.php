@@ -3,7 +3,6 @@
 
 @section('page-css')
     <link rel="stylesheet" href="/css/search.css" >
-    <link rel="stylesheet" href="/css/bootstrap-combobox.css">
 @endsection
 
 @section('content')
@@ -26,7 +25,6 @@
 @endsection
 
 @section('page-js')
-    <script src="/js/bootstrap-combobox.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $('.combobox').combobox();

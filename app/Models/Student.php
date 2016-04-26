@@ -34,8 +34,7 @@ class Student extends Model
     public function gender() {
         if (strcasecmp($this->gender, 'M') == 0) {
             return 'Male';
-        }
-        else {
+        } else {
             return 'Female';
         }
     }
