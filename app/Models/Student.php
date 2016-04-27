@@ -23,8 +23,9 @@ class Student extends Model
         'parent1_relationship_id'
     ];
 
+
     public function name() {
-        if ($this->mname != nullOrEmptyString()) {
+        if ($this->mname != null) {
             return $this->fname . ' ' . $this->mname . ' ' . $this->lname;
         } else {
             return $this->fname . ' ' . $this->lname;
@@ -38,6 +39,7 @@ class Student extends Model
             return 'Female';
         }
     }
+
 
     public function parent1() {
         return $this->belongsTo('App\Models\Parent1');

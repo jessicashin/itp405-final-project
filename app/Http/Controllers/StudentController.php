@@ -34,7 +34,7 @@ class StudentController extends Controller
         }
 
         $studentId = $request->input('student');
-        $student = Student::with('parent1', 'parent2')->find($studentId);
+        $student = Student::with('parent1', 'parent2', 'school')->find($studentId);
 
         return view('profile', [
             'student' => $student

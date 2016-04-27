@@ -28,6 +28,12 @@ class Parent2 extends Model
         }
     }
 
+    public function progressReport() {
+        if ($this->progress_report == 1) {
+            return 'yes';
+        } else { return 'no'; }
+    }
+
     public function relationship() {
         return $this->belongsTo('App\Models\Lookup\RelationshipType');
     }
