@@ -32,6 +32,9 @@ class Parent1 extends Model
         } else { return 'no'; }
     }
 
+    public function students() {
+        return $this->hasMany('App\Models\Student');
+    }
     public function title() {
         return $this->belongsTo('App\Models\Lookup\Title');
     }

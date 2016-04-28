@@ -13,7 +13,7 @@
             <h2 class="search-form-heading">Search for a student</h2>
 
             @if (count($errors) > 0)
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" style="text-align: center">
                     @foreach ($errors->all() as $error)
                         {{ $error }}
                     @endforeach

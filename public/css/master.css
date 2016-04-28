@@ -29,23 +29,3 @@ body {
     margin-left: 1em;
     margin-right: 1em;
 }
-
-.page-flags {
-    margin: 0 auto;
-}
-.flash-success {
-    background: #80ff80;
-    color: #008000;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    text-align: center;
-}
-.flash-error {
-    background: #ff6666;
-    color: #990000;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    text-align: center;
-}

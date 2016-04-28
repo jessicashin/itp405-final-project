@@ -47,7 +47,7 @@
                     </tr>
                     <tr>
                         <td>First Language</td>
-                        <td>@if($student->first_language != null) {{ $student->first_language->name }} @endif</td>
+                        <td>@if($student->firstLanguage != null) {{ $student->firstLanguage->name }} @endif</td>
                     </tr>
                     <tr>
                         <td>Ethnicity</td>

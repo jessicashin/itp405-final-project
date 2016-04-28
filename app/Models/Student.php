@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $fillable = [
+        'id',
         'fname',
         'lname',
         'mname',
@@ -22,7 +23,6 @@ class Student extends Model
         'ethnicity_id',
         'parent1_relationship_id'
     ];
-
 
     public function name() {
         if ($this->mname != null) {
