@@ -31,7 +31,7 @@ class StudentController extends Controller
         $student = Student::with('parent1', 'parent2', 'school')->find($id);
         $flickr = new Flickr(['api_key' => 'ba81959ac2eb3de25244fbd03cf2bbbe']);
         $photos = $flickr->getPhotos();
-        $photos_index = rand (0,5);
+        $photos_index = rand (0,9);
         $photo = $photos->photo[$photos_index];
         return view('profile', [
             'student' => $student,

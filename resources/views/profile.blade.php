@@ -6,10 +6,12 @@
     <div class="container" style="margin-bottom: 20px">
         <div class="row">
             <div class="col-md-6">
-                <h2>Student Information</h2>
-                <h3>{{ $student->name() }}</h3>
-                <img src="http://farm{{$photo->farm}}.staticflickr.com/{{$photo->server}}/{{$photo->id}}_{{$photo->secret}}.jpg" height="300">
-                <br><br>
+                <img src="{{ $photo->url_q }}" style="vertical-align: text-bottom; margin: 30px 20px 0 0;">
+                <div style="display: inline-block; margin-bottom: 10px">
+                    <h3>Student Information</h3>
+                    <h2>{{ $student->name() }}</h2>
+                </div>
+
                 <table class="table table-striped">
                     <tr>
                         <td>Student ID</td>
@@ -64,8 +66,7 @@
 
             <div class="col-md-offset-1 col-md-5">
                 <div class="row">
-                    <br>
-                    <h4>Primary Parent/Guardian Information</h4>
+                    <h4 style="margin-top: 30px">Primary Parent/Guardian Information</h4>
                     <h4>{{ $student->parent1->name() }}</h4>
                     <table class="table table-striped">
                         <tr>
