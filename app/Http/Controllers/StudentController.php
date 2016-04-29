@@ -28,12 +28,22 @@ class StudentController extends Controller
     }
 
     public function show($id) {
-        $student = Student::with('parent1', 'parent2', 'school')->find($id);
+        $students = Student::orderBy('fname')->get();
+        $student = Student::with(
+            'parent1.address.state',
+            'parent1.title',
+            'parent2.address.state',
+            'parent2.title',
+            'school',
+            'firstLanguage',
+            'ethnicity')
+            ->find($id);
         $flickr = new Flickr(['api_key' => 'ba81959ac2eb3de25244fbd03cf2bbbe']);
         $photos = $flickr->getPhotos();
         $photos_index = rand (0,9);
         $photo = $photos->photo[$photos_index];
         return view('profile', [
+            'students' => $students,
             'student' => $student,
             'photo' => $photo,
         ]);

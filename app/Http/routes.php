@@ -33,4 +33,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/students/{id}', 'StudentController@show');
     Route::get('/register', 'StudentController@create');
     Route::post('/register', 'StudentController@store');
+    Route::get('/students/{id}/enrollment', 'EnrollmentController@show');
 });

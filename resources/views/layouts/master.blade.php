@@ -49,8 +49,8 @@
             <p class="text-muted">
                 <span class="footer-text">28 April 2016</span>
                 <span class="footer-text">Jessica Shin</span>
-                <span class="footer-text">ITP-405 Final Project</span>
-                <span class="footer-text">Student Records DataBase</span>
+                <span class="footer-text hidden-xs">ITP-405 Final Project</span>
+                <span class="footer-text hidden-xs">Student Records DataBase</span>
             </p>
         </div>
     </footer>
