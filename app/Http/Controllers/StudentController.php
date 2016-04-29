@@ -12,6 +12,7 @@ use App\Models\Lookup\FirstLanguage;
 use App\Models\Parent1;
 use App\Models\Parent2;
 use App\Models\Student;
+use App\Services\API\Flickr;
 use Illuminate\Http\Request;
 
 use Validator;
@@ -26,18 +27,15 @@ class StudentController extends Controller
         ]);
     }
 
-    public function show(Request $request) {
-        $validator = Validator::make($request->all(), ['student' => 'required',],
-            ['student.required' => 'No student was selected!',]);
-        if ($validator->fails()) {
-            return redirect('/search')->withErrors($validator);
-        }
-
-        $studentId = $request->input('student');
-        $student = Student::with('parent1', 'parent2', 'school')->find($studentId);
-
+    public function show($id) {
+        $student = Student::with('parent1', 'parent2', 'school')->find($id);
+        $flickr = new Flickr(['api_key' => 'ba81959ac2eb3de25244fbd03cf2bbbe']);
+        $photos = $flickr->getPhotos();
+        $photos_index = rand (0,5);
+        $photo = $photos->photo[$photos_index];
         return view('profile', [
-            'student' => $student
+            'student' => $student,
+            'photo' => $photo,
         ]);
     }
 
@@ -221,6 +219,7 @@ class StudentController extends Controller
         }
         return redirect('/register')->with('success', true);
     }
+
 
     public function studentId($hphone) {
         $branch_code = '129';

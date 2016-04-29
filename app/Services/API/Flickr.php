@@ -12,36 +12,23 @@ class Flickr {
         $this->api_key = $config['api_key'];
     }
 
-    public function userPhotos($userID)
+    public function getPhotos()
     {
-        $url = $this->buildRequestURL('flickr.people.getPublicPhotos', [
-            'user_id' => $userID,
-            'per_page' => 5
-        ]);
-        if (Cache::get($url)) {
-            $photosString = Cache::get($url);
-            $xml = simplexml_load_string($photosString);
-            $photos = $xml->{"photo"};
+        if (Cache::get('dog_photos')) {
+            $jsonString = Cache::get('dog_photos');
         } else {
-            $xml = simplexml_load_file($url)->{"photos"};
-            $photos = $xml->{"photo"};
-            $photosString = $xml->asXML();
-            Cache::put($url, $photosString, 5);
+            $url = $this->buildRequestURL('flickr.photos.search', [
+                'tags' => 'dog',
+                'format' => 'json',
+                'nojsoncallback' => 1,
+                'per_page' => 6,
+            ]);
+            $jsonString = file_get_contents($url);
+            Cache::put('dog_photos', $jsonString, 5);
         }
 
+        $photos = json_decode($jsonString)->photos;
         return $photos;
-    }
-
-    public function userID($username)
-    {
-        $url = $this->buildRequestURL('flickr.people.findByUsername', [
-            'username' => $username
-        ]);
-        $xml = simplexml_load_file($url);
-        $user = $xml->{"user"};
-        $id = (string)$user["nsid"];
-
-        return $id;
     }
 
     protected function buildRequestURL($method, $qs = [])

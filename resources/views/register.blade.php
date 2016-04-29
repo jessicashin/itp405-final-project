@@ -368,12 +368,14 @@
             format: 'mm/dd/yyyy'
         });
     </script>
+
     <script type="text/javascript">
         $(document).ready(function(){
             $('.combobox').combobox();
         });
     </script>
+
     <script>
-        $('div.alert').delay(4000).slideUp(300);
+        $('div.alert').delay(3000).slideUp(300);
     </script>
 @endsection

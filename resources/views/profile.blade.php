@@ -3,11 +3,13 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container" style="margin-bottom: 20px">
         <div class="row">
             <div class="col-md-6">
                 <h2>Student Information</h2>
                 <h3>{{ $student->name() }}</h3>
+                <img src="http://farm{{$photo->farm}}.staticflickr.com/{{$photo->server}}/{{$photo->id}}_{{$photo->secret}}.jpg" height="300">
+                <br><br>
                 <table class="table table-striped">
                     <tr>
                         <td>Student ID</td>
@@ -19,7 +21,7 @@
                     </tr>
                     <tr>
                         <td>Birthdate</td>
-                        <td>{{ $student->birthdate }}</td>
+                        <td>{{ date('n/j/Y', strtotime($student->birthdate)) }}</td>
                     </tr>
                     <tr>
                         <td>Grade</td>
@@ -43,7 +45,7 @@
                     </tr>
                     <tr>
                         <td>Date to U.S.</td>
-                        <td>@if($student->date_to_us != null){{ $student->date_to_us }} @endif</td>
+                        <td>@if($student->date_to_us != null){{ date('n/j/Y', strtotime($student->date_to_us)) }} @endif</td>
                     </tr>
                     <tr>
                         <td>First Language</td>
@@ -52,6 +54,10 @@
                     <tr>
                         <td>Ethnicity</td>
                         <td>@if($student->ethnicity != null) {{ $student->ethnicity->name }} @endif</td>
+                    </tr>
+                    <tr>
+                        <td>Register Date</td>
+                        <td>{{ date('n/j/Y', strtotime($student->created_at)) }}</td>
                     </tr>
                 </table>
             </div>
@@ -82,7 +88,9 @@
                             <td>Address</td>
                             <td>
                                 {{ $student->parent1->address->street }}<br>
-                                {{ $student->parent1->address->city }}, {{ $student->parent1->address->state->code }} {{ $student->parent1->address->zip }}
+                                {{ $student->parent1->address->city }},
+                                {{ $student->parent1->address->state->code }}
+                                {{ $student->parent1->address->zip }}
                             </td>
                         </tr>
                         <tr>
@@ -95,48 +103,72 @@
                         </tr>
                     </table>
                 </div>
-                @if ($student->parent2 != null)
-                    <br>
-                    <div class="row">
-                        <h4>Parent/Guardian 2 Information</h4>
-                        <h4>{{ $student->parent2->name() }}</h4>
-                        <table class="table table-striped">
-                            <tr>
-                                <td>Relationship</td>
-                                <td>{{ $student->parent2->relationship->name }}</td>
-                            </tr>
-                            <tr>
-                                <td>Home Phone</td>
-                                <td>@if ($student->parent2->hphone != null) {{ $student->parent2->hphone }} @endif</td>
-                            </tr>
-                            <tr>
-                                <td>Cell Phone</td>
-                                <td>@if ($student->parent2->cphone != null) {{ $student->parent2->cphone }} @endif</td>
-                            </tr>
-                            <tr>
-                                <td>Work Phone</td>
-                                <td>@if ($student->parent2->wphone != null) {{ $student->parent2->wphone }} @endif</td>
-                            </tr>
-                            <tr>
-                                <td>Address</td>
-                                <td>
-                                    @if ($student->parent2->address != null)
+                <br>
+                <div class="row">
+                    <h4>Parent/Guardian 2 Information</h4>
+                    <h4>@if ($student->parent2 != null) {{ $student->parent2->name() }} @endif</h4>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>Relationship</td>
+                            <td>
+                                @if ($student->parent2 != null)
+                                    {{ $student->parent2->relationship->name }}
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Home Phone</td>
+                            <td>
+                                @if ($student->parent2 != null && $student->parent2->hphone != null)
+                                    {{ $student->parent2->hphone }}
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cell Phone</td>
+                            <td>
+                                @if ($student->parent2 != null && $student->parent2->cphone != null)
+                                    {{ $student->parent2->cphone }}
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Work Phone</td>
+                            <td>
+                                @if ($student->parent2 != null && $student->parent2->wphone != null)
+                                    {{ $student->parent2->wphone }}
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>
+                                @if ($student->parent2 != null && $student->parent2->address != null)
                                     {{ $student->parent2->address->street }}<br>
-                                    {{ $student->parent2->address->city }}, {{ $student->parent2->address->state->code }} {{ $student->parent2->address->zip }}
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>@if ($student->parent2->email != null) {{ $student->parent2->email }} @endif</td>
-                            </tr>
-                            <tr>
-                                <td>Progress Report</td>
-                                <td>{{ $student->parent2->progressReport() }}</td>
-                            </tr>
-                        </table>
-                    </div>
-                @endif
+                                    {{ $student->parent2->address->city }},
+                                    {{ $student->parent2->address->state->code }}
+                                    {{ $student->parent2->address->zip }}
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>
+                                @if ($student->parent2 != null && $student->parent2->email != null)
+                                    {{ $student->parent2->email }}
+                                @endif
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Progress Report</td>
+                            <td>
+                                @if ($student->parent2 != null)
+                                    {{ $student->parent2->progressReport() }}
+                                @endif
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

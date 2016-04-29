@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>StuReg - @yield('page-title')</title>
+    <title>SRDB - @yield('page-title')</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/search" style="margin-right: 5px;">StuReg</a>
+                <a class="navbar-brand" href="/search" style="margin-right: 5px;">SRDB</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -35,7 +35,7 @@
                     <li><a href="">Manage Courses</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://itpweb.herokuapp.com/assignments/405-final-project">ITP-405 Final Project</a></li>
+                    <li><a href="http://itpweb.herokuapp.com/assignments/405-final-project">Final Project</a></li>
                     <li><a href="https://github.com/jessicashin/itp405-final-project">Github Repo</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
@@ -47,9 +47,10 @@
     <footer class="footer">
         <div class="footer-container container text-center">
             <p class="text-muted">
-                <span class="footer-text">26 April 2016</span>
+                <span class="footer-text">28 April 2016</span>
                 <span class="footer-text">Jessica Shin</span>
                 <span class="footer-text">ITP-405 Final Project</span>
+                <span class="footer-text">Student Records DataBase</span>
             </p>
         </div>
     </footer>
