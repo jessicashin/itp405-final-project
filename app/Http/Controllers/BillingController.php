@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class EnrollmentController extends Controller
+class BillingController extends Controller
 {
     public function show($id) {
         $students = Student::orderBy('fname')->get();
-        $student = Student::with('enrollments')->find($id);
-        return view('enrollment', [
+        $student = Student::with('billings')->find($id);
+        return view('billing', [
             'students' => $students,
             'student' => $student,
         ]);

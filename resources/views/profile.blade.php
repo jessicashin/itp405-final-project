@@ -8,7 +8,7 @@
         <ul class="nav nav-pills" style="margin-bottom: 10px">
             <li role="presentation" class="active"><a href="#">Profile</a></li>
             <li role="presentation"><a href="/students/{{ $student->id }}/enrollment">Enrollment</a></li>
-            <li role="presentation" style="margin-right: 20px"><a href="#">Billing</a></li>
+            <li role="presentation" style="margin-right: 20px"><a href="/students/{{ $student->id }}/billing">Billing</a></li>
             <li class="hidden-xs">
                 <div class="nav-combobox">
                 <select class="form-control combobox" id="student_search">
