@@ -1,7 +1,5 @@
 <?php
 
-use \App\Services\API\Flickr;
-
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -35,4 +33,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/register', 'StudentController@store');
     Route::get('/students/{id}/enrollment', 'EnrollmentController@show');
     Route::get('/students/{id}/billing', 'BillingController@show');
+
+    // Authentication routes...
+    Route::get('/login', 'Auth\AuthController@login');
+    Route::post('/login', 'Auth\AuthController@authenticate');
+    Route::get('/logout', 'Auth\AuthController@logout');
 });

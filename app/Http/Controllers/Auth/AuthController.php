@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -28,11 +30,10 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/search';
 
     /**
      * Create a new authentication controller instance.
-     *
      */
     public function __construct()
     {
@@ -48,8 +49,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'name' => 'required|max:45',
+            'username' => 'required|email|max:30|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -64,8 +65,34 @@ class AuthController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function login() {
+        return view('auth.login');
+    }
+
+    public function authenticate(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+        if (Auth::attempt(['username' => $request->input('username'), 'password' => $request->input('password')])) {
+            return redirect()->intended('/search');
+        }
+        else {
+            $validator->errors()->add('password', 'Login is invalid!');
+            return redirect('/login')
+                ->withErrors($validator)
+                ->withInput();
+        }
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect('/login')->with('success', true);
+    }
+
 }

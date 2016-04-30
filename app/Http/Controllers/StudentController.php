@@ -20,7 +20,13 @@ use App\Http\Requests;
 
 class StudentController extends Controller
 {
-    public function search() {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function search()
+    {
         $students = Student::orderBy('fname')->get();
         return view('search', [
             'students' => $students,
