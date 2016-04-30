@@ -31,9 +31,11 @@ class StudentController extends Controller
         $students = Student::orderBy('fname')->get();
         $student = Student::with(
             'parent1.address.state',
+            'parent1Relationship',
             'parent1.title',
             'parent2.address.state',
             'parent2.title',
+            'parent2.relationship',
             'school',
             'firstLanguage',
             'ethnicity')
