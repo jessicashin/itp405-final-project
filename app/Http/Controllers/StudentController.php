@@ -76,7 +76,7 @@ class StudentController extends Controller
             's_grade' => 'required',
             's_school' => 'required',
             's_cphone' => 'required',
-            's_email' => 'required',
+            's_email' => 'required|email',
             'p1_fname' => 'required',
             'p1_lname' => 'required',
             'p1_relationship' => 'required',
@@ -87,7 +87,7 @@ class StudentController extends Controller
             'p1_city' => 'required',
             'p1_state' => 'required',
             'p1_zip' => 'required',
-            'p1_email' => 'required',
+            'p1_email' => 'required|email',
             'p2_fname' => 'required_with:p2_relationship',
             'p2_lname' => 'required_with:p2_relationship',
             'p2_relationship' => 'required_with:p2_title,p2_fname,p2_lname,p2_hphone,p2_cphone,p2_wphone,p2_street,p2_email',
@@ -95,6 +95,7 @@ class StudentController extends Controller
             'p2_city' => 'required_with:p2_street,p2_state,p2_zip',
             'p2_state' => 'required_with:p2_street,p2_city,p2_zip',
             'p2_zip' => 'required_with:p2_street,p2_city,p2_state',
+            'p2_email' => 'email',
         ], [
             'required' => 'All required fields must be filled.',
             'p2_fname.required_with' => 'Please enter the First Name for Parent 2.',
@@ -103,7 +104,10 @@ class StudentController extends Controller
             'p2_street.required_with' => 'Please enter the Address for Parent 2.',
             'p2_city.required_with' => 'Please enter the City for Parent 2.',
             'p2_state.required_with' => 'Please enter the State for Parent 2.',
-            'p2_zip.required_with' => 'Please enter the Zip Code for Parent 2.'
+            'p2_zip.required_with' => 'Please enter the Zip Code for Parent 2.',
+            's_email.email' => 'Student email field is not valid.',
+            'p1_email.email' => 'Parent 1 email field is not valid.',
+            'p2_email.email' => 'Parent 2 email field is not valid.',
         ]);
         if ($validator->fails()) {
             return redirect('/register')
@@ -133,10 +137,10 @@ class StudentController extends Controller
             }
             $parent1->fname = $request->input('p1_fname');
             $parent1->lname = $request->input('p1_lname');
-            $parent1->hphone = $request->input('p1_hphone');
-            $parent1->cphone = $request->input('p1_cphone');
+            $parent1->hphone = $this->sanitizePhone($request->input('p1_hphone'));
+            $parent1->cphone = $this->sanitizePhone($request->input('p1_cphone'));
             if (!empty($request->input('p1_wphone'))) {
-                $parent1->wphone = $request->input('p1_wphone');
+                $parent1->wphone = $this->sanitizePhone($request->input('p1_wphone'));
             }
             $parent1->address_id = $address1->id;
             $parent1->email = $request->input('p1_email');
@@ -161,7 +165,7 @@ class StudentController extends Controller
         $student->birthdate = date('Y-m-d', strtotime($request->input('s_birthdate')));
         $student->grade = $request->input('s_grade');
         $student->school_id = $request->input('s_school');
-        $student->cphone = $request->input('s_cphone');
+        $student->cphone = $this->sanitizePhone($request->input('s_cphone'));
         $student->email = $request->input('s_email');
         if (!empty($request->input('s_birth_country'))) {
             $student->birth_country = $request->input('s_birth_country');
@@ -205,13 +209,13 @@ class StudentController extends Controller
             $parent2->lname = $request->input('p2_lname');
             $parent2->relationship_id = $request->input('p2_relationship');
             if (!empty($request->input('p2_hphone'))) {
-                $parent2->hphone = $request->input('p2_hphone');
+                $parent2->hphone = $this->sanitizePhone($request->input('p2_hphone'));
             }
             if (!empty($request->input('p2_cphone'))) {
-                $parent2->cphone = $request->input('p2_cphone');
+                $parent2->cphone = $this->sanitizePhone($request->input('p2_cphone'));
             }
             if (!empty($request->input('p2_wphone'))) {
-                $parent2->wphone = $request->input('p2_wphone');
+                $parent2->wphone = $this->sanitizePhone($request->input('p2_wphone'));
             }
             if (!empty($address2)) {
                 $parent2->address_id = $address2->id;
@@ -245,6 +249,11 @@ class StudentController extends Controller
             $student = Student::find($student_id);
         }
         return $student_id;
+    }
+
+    public function sanitizePhone($phone) {
+        $sanitized_phone = str_replace(['(', ')', '-', ' '], '', $phone);
+        return $sanitized_phone;
     }
 
 }

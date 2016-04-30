@@ -88,7 +88,7 @@
                 <div class="form-group">
                     <label for="s_cphone" class="control-label col-sm-3"><span class="required">*</span> Cell Phone</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="s_cphone" name="s_cphone" value="{{ old('s_cphone') }}">
+                        <input type="text" class="form-control" id="s_cphone" name="s_cphone" data-mask="(999) 999-9999" value="{{ old('s_cphone') }}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -179,19 +179,19 @@
                 <div class="form-group">
                     <label for="p1_hphone" class="control-label col-sm-3"><span class="required">*</span> Home Phone</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="p1_hphone" name="p1_hphone" value="{{ old('p1_hphone') }}">
+                        <input type="text" class="form-control" id="p1_hphone" name="p1_hphone" data-mask="(999) 999-9999" value="{{ old('p1_hphone') }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="p1_cphone" class="control-label col-sm-3"><span class="required">*</span> Cell Phone</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="p1_cphone" name="p1_cphone" value="{{ old('p1_cphone') }}">
+                        <input type="text" class="form-control" id="p1_cphone" name="p1_cphone" data-mask="(999) 999-9999" value="{{ old('p1_cphone') }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="p1_wphone" class="control-label col-sm-3">Work Phone</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="p1_wphone" name="p1_wphone" value="{{ old('p1_wphone') }}">
+                        <input type="text" class="form-control" id="p1_wphone" name="p1_wphone" data-mask="(999) 999-9999" value="{{ old('p1_wphone') }}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -281,19 +281,19 @@
                 <div class="form-group">
                     <label for="p2_hphone" class="control-label col-sm-3">Home Phone</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="p2_hphone" name="p2_hphone" value="{{ old('p2_hphone') }}">
+                        <input type="text" class="form-control" id="p2_hphone" name="p2_hphone" data-mask="(999) 999-9999" value="{{ old('p2_hphone') }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="p2_cphone" class="control-label col-sm-3">Cell Phone</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="p2_cphone" name="p2_cphone" value="{{ old('p2_cphone') }}">
+                        <input type="text" class="form-control" id="p2_cphone" name="p2_cphone" data-mask="(999) 999-9999" value="{{ old('p2_cphone') }}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="p2_wphone" class="control-label col-sm-3">Work Phone</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="p2_wphone" name="p2_wphone" value="{{ old('p2_wphone') }}">
+                        <input type="text" class="form-control" id="p2_wphone" name="p2_wphone" data-mask="(999) 999-9999" value="{{ old('p2_wphone') }}">
                     </div>
                 </div>
                 <div class="form-group">

@@ -53,7 +53,11 @@
                     </tr>
                     <tr>
                         <td>Cell Phone</td>
-                        <td>{{ $student->cphone }}</td>
+                        <td>
+                            {{ "(" . substr($student->cphone, 0, 3).") "
+                            . substr($student->cphone, 3, 3) . "-"
+                            . substr($student->cphone, 6) }}
+                        </td>
                     </tr>
                     <tr>
                         <td>Email</td>
@@ -94,15 +98,29 @@
                             </tr>
                             <tr>
                                 <td>Home Phone</td>
-                                <td>{{ $student->parent1->hphone }}</td>
+                                <td>
+                                    {{ "(" . substr($student->parent1->hphone, 0, 3).") "
+                                    . substr($student->parent1->hphone, 3, 3) . "-"
+                                    . substr($student->parent1->hphone, 6) }}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Cell Phone</td>
-                                <td>{{ $student->parent1->cphone }}</td>
+                                <td>
+                                    {{ "(" . substr($student->parent1->cphone, 0, 3).") "
+                                    . substr($student->parent1->cphone, 3, 3) . "-"
+                                    . substr($student->parent1->cphone, 6) }}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Work Phone</td>
-                                <td>@if ($student->parent1->wphone != null) {{ $student->parent1->wphone }} @endif</td>
+                                <td>
+                                    @if ($student->parent1->wphone != null)
+                                        {{ "(" . substr($student->parent1->wphone, 0, 3).") "
+                                        . substr($student->parent1->wphone, 3, 3) . "-"
+                                        . substr($student->parent1->wphone, 6) }}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
                                 <td>Address</td>
@@ -140,7 +158,9 @@
                                 <td>Home Phone</td>
                                 <td>
                                     @if ($student->parent2 != null && $student->parent2->hphone != null)
-                                        {{ $student->parent2->hphone }}
+                                        {{ "(" . substr($student->parent2->hphone, 0, 3).") "
+                                        . substr($student->parent2->hphone, 3, 3) . "-"
+                                        . substr($student->parent2->hphone, 6) }}
                                     @endif
                                 </td>
                             </tr>
@@ -148,7 +168,9 @@
                                 <td>Cell Phone</td>
                                 <td>
                                     @if ($student->parent2 != null && $student->parent2->cphone != null)
-                                        {{ $student->parent2->cphone }}
+                                        {{ "(" . substr($student->parent2->cphone, 0, 3).") "
+                                        . substr($student->parent2->cphone, 3, 3) . "-"
+                                        . substr($student->parent2->cphone, 6) }}
                                     @endif
                                 </td>
                             </tr>
@@ -156,7 +178,9 @@
                                 <td>Work Phone</td>
                                 <td>
                                     @if ($student->parent2 != null && $student->parent2->wphone != null)
-                                        {{ $student->parent2->wphone }}
+                                        {{ "(" . substr($student->parent2->wphone, 0, 3).") "
+                                        . substr($student->parent2->wphone, 3, 3) . "-"
+                                        . substr($student->parent2->wphone, 6) }}
                                     @endif
                                 </td>
                             </tr>
