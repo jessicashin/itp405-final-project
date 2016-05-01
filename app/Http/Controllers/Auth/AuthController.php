@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Http\Request;
@@ -40,50 +39,22 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:45',
-            'username' => 'required|email|max:30|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
-
     public function login() {
         return view('auth.login');
     }
 
     public function authenticate(Request $request) {
         $validator = Validator::make($request->all(), [
-            'username' => 'required',
+            'username' => 'required|exists:users,username',
             'password' => 'required',
+        ], [
+            'exists' => 'Username does not exist.',
         ]);
         if (Auth::attempt(['username' => $request->input('username'), 'password' => $request->input('password')])) {
             return redirect()->intended('/search');
         }
         else {
-            $validator->errors()->add('password', 'Login is invalid!');
+            $validator->errors()->add('password', 'Password is invalid.');
             return redirect('/login')
                 ->withErrors($validator)
                 ->withInput();

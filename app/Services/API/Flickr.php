@@ -23,10 +23,10 @@ class Flickr {
                 'format' => 'json',
                 'nojsoncallback' => 1,
                 'safe_search' => 1,
-                'per_page' => 10,
+                'per_page' => 20,
             ]);
             $jsonString = file_get_contents($url);
-            Cache::put('dog_photos', $jsonString, 10);
+            Cache::put('dog_photos', $jsonString, 60);
         }
         $photos = json_decode($jsonString)->photos;
         return $photos;

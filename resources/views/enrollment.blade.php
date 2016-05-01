@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('page-title', $student->name() . ' Enrollment')
+@section('page-title', 'Enrollment')
 
 @section('content')
 

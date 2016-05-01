@@ -35,6 +35,9 @@
                     <li><a href="/search">Search</a></li>
                     <li><a href="/register">Register</a></li>
                     <li><a href="">Courses</a></li>
+                    @if (\Illuminate\Support\Facades\Auth::user()->admin == 1)
+                        <li><a href="/users">Users</a></li>
+                    @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="http://itpweb.herokuapp.com/assignments/405-final-project">Final Project</a></li>
@@ -50,7 +53,7 @@
     <footer class="footer">
         <div class="footer-container container text-center">
             <p class="text-muted">
-                <span class="footer-text">29 April 2016</span>
+                <span class="footer-text">30 April 2016</span>
                 <span class="footer-text">Jessica Shin</span>
                 <span class="footer-text hidden-xs">ITP-405 Final Project</span>
                 <span class="footer-text hidden-xs">Student Records DataBase</span>

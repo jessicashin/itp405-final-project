@@ -2,7 +2,7 @@
 @section('page-title', 'Search')
 
 @section('page-css')
-    <link rel="stylesheet" href="/css/search.css" >
+    <link rel="stylesheet" href="/css/search.css">
 @endsection
 
 @section('content')

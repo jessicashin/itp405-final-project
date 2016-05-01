@@ -2,7 +2,7 @@
 @section('page-title', 'Register')
 
 @section('page-css')
-    <link rel="stylesheet" href="/css/register.css" >
+    <link rel="stylesheet" href="/css/register.css">
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
                 <hr>
                 @if (session('success'))
                     <div class="alert alert-success" style="text-align: center">
-                        Student was successfully registered!
+                        Student was successfully registered.
                     </div>
                 @endif
                 @if (count($errors) > 0)
@@ -363,18 +363,6 @@
 
 
 @section('page-js')
-    <script type="text/javascript">
-        $('.datepicker').datepicker({
-            format: 'mm/dd/yyyy'
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('.combobox').combobox();
-        });
-    </script>
-
     <script>
         $('div.alert').delay(3000).slideUp(300);
     </script>

@@ -25,8 +25,7 @@ class StudentController extends Controller
         $this->middleware('auth');
     }
 
-    public function search()
-    {
+    public function search() {
         $students = Student::orderBy('fname')->get();
         return view('search', [
             'students' => $students,
@@ -48,7 +47,7 @@ class StudentController extends Controller
             ->find($id);
         $flickr = new Flickr(['api_key' => 'ba81959ac2eb3de25244fbd03cf2bbbe']);
         $photos = $flickr->getPhotos();
-        $photos_index = rand (0,9);
+        $photos_index = rand (0,19);
         $photo = $photos->photo[$photos_index];
         return view('profile', [
             'students' => $students,
