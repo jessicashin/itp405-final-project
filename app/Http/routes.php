@@ -33,6 +33,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/students/{id}', 'StudentController@show');
     Route::get('/register', 'StudentController@create');
     Route::post('/register', 'StudentController@store');
+
     Route::get('/students/{id}/enrollment', 'EnrollmentController@show');
     Route::get('/students/{id}/billing', 'BillingController@show');
 
@@ -40,6 +41,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/admin/users', 'UserController@create');
     Route::put('/admin/users/{id}', 'UserController@update');
     Route::delete('/admin/users/{id}', 'UserController@destroy');
+
+    Route::get('/courses', 'CourseController@index');
+    Route::get('/courses/{id}', 'CourseController@show');
+    Route::post('/courses/{id}', 'CourseController@enroll');
+    Route::get('/admin/courses', 'CourseController@create');
+    Route::post('/admin/courses', 'CourseController@store');
 
     // Authentication routes...
     Route::get('/login', 'Auth\AuthController@login');
