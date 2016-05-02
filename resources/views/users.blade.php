@@ -27,7 +27,7 @@
                             @endif
                             <div class="form-group">
                                 <label for="name" class="sr-only">Full Name</label>
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" value="{{ old('name') }}">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Full name" value="{{ old('name') }}">
                             </div>
                             <div class="form-group">
                                 <label for="username" class="sr-only">Username</label>
@@ -39,7 +39,7 @@
                             </div>
                             <div class="form-group" style="margin-bottom: 5px">
                                 <label for="password_confirmation" class="sr-only">Confirm Password</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" class="form-control">
+                                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" class="form-control">
                             </div>
                             <div class="form-group checkbox" style="margin-bottom: 15px">
                                 <label>
@@ -113,14 +113,14 @@
                     </div>
                     <form action="/admin/users/{{ $user->id }}" method="post" class="form-horizontal">
                         <div class="modal-body">
-                            @if (count($errors->editErrors) > 0)
-                                <div class="alert alert-danger" style="text-align: center">
-                                    {{ $errors->editErrors->first() }}
-                                </div>
-                            @endif
                             {{ csrf_field() }}
                             {{ method_field('PUT') }}
                             <div class="container-fluid modal-form">
+                                @if (count($errors->editErrors) > 0)
+                                    <div class="alert alert-danger" style="text-align: center">
+                                        {{ $errors->editErrors->first() }}
+                                    </div>
+                                @endif
                                 <div class="form-group">
                                     <label for="{{ $user->id }}_name" class="control-label col-sm-3">Full Name</label>
                                     <div class="col-sm-9">
@@ -176,16 +176,12 @@
         <div class="modal fade" id="deleteUser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteUser{{ $user->id }}Label">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="deleteUser{{ $user->id }}Label">Delete User:&nbsp; {{ $user->name }}</h4>
-                    </div>
                     <form action="/admin/users/{{ $user->id }}" method="post">
                         <div class="modal-body">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <div class="container-fluid modal-form">
-                                <p class="delete-text">Are you sure you want to delete user <strong>{{ $user->username }}</strong>?</p>
+                                <p class="delete-text">Are you sure you want to delete user <strong>{{ $user->name }} ({{ $user->username }})</strong>?</p>
                             </div>
                         </div>
                         <div class="modal-footer">

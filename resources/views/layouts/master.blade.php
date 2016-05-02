@@ -32,20 +32,26 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/search">Search</a></li>
-                    <li><a href="/register">Register</a></li>
+                    <li class="{{ Request::is('search') ? 'active' : '' }}"><a href="/search">Search</a></li>
+                    <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="/register">Register</a></li>
                     @if (\Illuminate\Support\Facades\Auth::user()->admin == 1)
-                        <li><a href="/admin/users">Users</a></li>
+                        <li class="dropdown {{ (Request::is('courses') || Request::is('admin/courses')) ? 'active' : '' }}">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="courses">Manage courses</a></li>
+                                <li><a href="admin/courses">Add new course</a></li>
+                            </ul>
+                        </li>
+                        <li class="{{ Request::is('admin/instructors') ? 'active' : '' }}"><a href="/admin/instructors">Instructors</a></li>
+                        <li class="{{ Request::is('admin/users') ? 'active' : '' }}"><a href="/admin/users">Users</a></li>
                     @else
-                        <li><a href="/courses">Courses</a></li>
-                    @endif
-                    @if (\Illuminate\Support\Facades\Auth::user()->admin == 1)
-                        <li><a href="/admin/users">Users</a></li>
+                        <li class="{{ Request::is('courses') ? 'active' : '' }}"><a href="/courses">Courses</a></li>
+                        <li class="{{ Request::is('instructors') ? 'active' : '' }}"><a href="/instructors">Instructors</a></li>
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://itpweb.herokuapp.com/assignments/405-final-project">Final Project</a></li>
-                    <li><a href="https://github.com/jessicashin/itp405-final-project">Github Repo</a></li>
+                    <li class="hidden-sm"><a href="http://itpweb.herokuapp.com/assignments/405-final-project">Final Project</a></li>
+                    <li class="hidden-sm"><a href="https://github.com/jessicashin/itp405-final-project">Github Repo</a></li>
                     <li><a href="/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a></li>
                 </ul>
             </div><!--/.nav-collapse -->

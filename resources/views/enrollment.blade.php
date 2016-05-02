@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('page-title', 'Enrollment')
+@section('page-title', 'Student Enrollment')
 
 @section('content')
 

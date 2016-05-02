@@ -10,16 +10,18 @@ class Course extends Model
         'code',
         'name',
         'tuition',
-        'session_id',
+        'course_session_id',
         'start_date',
         'end_date',
         'capacity'
     ];
 
+    public function courseSession() {
+        return $this->belongsTo('App\Models\Lookup\CourseSession');
+    }
     public function classSections() {
         return $this->hasMany('App\Models\ClassSection');
     }
-
     public function enrollments() {
         return $this->hasMany('App\Models\Enrollment');
     }

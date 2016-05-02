@@ -1,0 +1,12 @@
+.heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-modal {
+    max-width: 450px;
+}
+
+.delete-text {
+    margin-top: 15px;
+}

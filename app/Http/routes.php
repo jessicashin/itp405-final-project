@@ -38,11 +38,17 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/students/{id}/billing', 'BillingController@show');
 
     Route::get('/admin/users', 'UserController@show');
-    Route::post('/admin/users', 'UserController@create');
+    Route::post('/admin/users', 'UserController@store');
     Route::put('/admin/users/{id}', 'UserController@update');
     Route::delete('/admin/users/{id}', 'UserController@destroy');
 
-    Route::get('/courses', 'CourseController@index');
+    Route::get('/instructors', 'InstructorController@show');
+    Route::get('/admin/instructors', 'InstructorController@adminShow');
+    Route::post('/admin/instructors', 'InstructorController@store');
+    Route::put('/admin/instructors/{id}', 'InstructorController@update');
+    Route::delete('/admin/instructors/{id}', 'InstructorController@destroy');
+
+    Route::get('/courses', 'CourseController@search');
     Route::get('/courses/{id}', 'CourseController@show');
     Route::post('/courses/{id}', 'CourseController@enroll');
     Route::get('/admin/courses', 'CourseController@create');

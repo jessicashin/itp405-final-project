@@ -26,7 +26,7 @@ class UserController extends Controller
         ]);
     }
 
-    protected function create(Request $request) {
+    protected function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:45',
             'username' => 'required|max:30|unique:users',
