@@ -36,10 +36,10 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/students/{id}/enrollment', 'EnrollmentController@show');
     Route::get('/students/{id}/billing', 'BillingController@show');
 
-    Route::get('/users', 'UserController@show');
-    Route::post('/users', 'UserController@create');
-    Route::put('/users/{id}', 'UserController@update');
-    Route::delete('/users/{id}', 'UserController@destroy');
+    Route::get('/admin/users', 'UserController@show');
+    Route::post('/admin/users', 'UserController@create');
+    Route::put('/admin/users/{id}', 'UserController@update');
+    Route::delete('/admin/users/{id}', 'UserController@destroy');
 
     // Authentication routes...
     Route::get('/login', 'Auth\AuthController@login');

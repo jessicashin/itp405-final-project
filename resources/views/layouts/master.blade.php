@@ -36,7 +36,7 @@
                     <li><a href="/register">Register</a></li>
                     <li><a href="">Courses</a></li>
                     @if (\Illuminate\Support\Facades\Auth::user()->admin == 1)
-                        <li><a href="/users">Users</a></li>
+                        <li><a href="/admin/users">Users</a></li>
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

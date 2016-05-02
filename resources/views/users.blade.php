@@ -12,19 +12,19 @@
             <div class="row">
                 <div class="col-sm-4">
                     <h2 class="heading">Create New User</h2>
-                    @if (session('create-success'))
-                        <div class="alert alert-success" style="text-align: center">
-                            User was successfully created.
-                        </div>
-                    @endif
-                    @if (count($errors->createErrors) > 0)
-                        <div class="alert alert-danger" style="text-align: center">
-                            {{ $errors->createErrors->first() }}
-                        </div>
-                    @endif
-                    <form action="/users" method="post">
+                    <form action="/admin/users" method="post">
                         {{ csrf_field() }}
                         <div class="container-fluid">
+                            @if (session('create-success'))
+                                <div class="alert alert-success" style="text-align: center">
+                                    User was successfully created.
+                                </div>
+                            @endif
+                            @if (count($errors->createErrors) > 0)
+                                <div class="alert alert-danger" style="text-align: center">
+                                    {{ $errors->createErrors->first() }}
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <label for="name" class="sr-only">Full Name</label>
                                 <input type="text" id="name" name="name" class="form-control" placeholder="Full Name" value="{{ old('name') }}">
@@ -111,7 +111,7 @@
                             @endif
                         </h4>
                     </div>
-                    <form action="/users/{{ $user->id }}" method="post" class="form-horizontal">
+                    <form action="/admin/users/{{ $user->id }}" method="post" class="form-horizontal">
                         <div class="modal-body">
                             @if (count($errors->editErrors) > 0)
                                 <div class="alert alert-danger" style="text-align: center">
@@ -171,33 +171,31 @@
                 </div>
             </div>
         </div>
-    @endforeach
 
-    @foreach ($users as $user)
-    <!-- Modal -->
-    <div class="modal fade" id="deleteUser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteUser{{ $user->id }}Label">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="deleteUser{{ $user->id }}Label">Delete User:&nbsp; {{ $user->name }}</h4>
-                </div>
-                <form action="/users/{{ $user->id }}" method="post">
-                    <div class="modal-body">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-                        <div class="container-fluid modal-form">
-                            <p class="delete-text">Are you sure you want to delete user <strong>{{ $user->username }}</strong>?</p>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteUser{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteUser{{ $user->id }}Label">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="deleteUser{{ $user->id }}Label">Delete User:&nbsp; {{ $user->name }}</h4>
+                    </div>
+                    <form action="/admin/users/{{ $user->id }}" method="post">
+                        <div class="modal-body">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <div class="container-fluid modal-form">
+                                <p class="delete-text">Are you sure you want to delete user <strong>{{ $user->username }}</strong>?</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     @endforeach
 
 @endsection

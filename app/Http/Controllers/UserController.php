@@ -65,6 +65,7 @@ class UserController extends Controller
         ], [
             'required' => 'The name and username are required.',
             'unique' => 'The username is already taken.',
+            'required_with' => 'Please enter the current password.',
         ]);
         if (!empty($request->input('current_password')) && !empty($request->input('new_password'))) {
             if (!Hash::check($request->input('current_password'), $user->password)) {
@@ -105,4 +106,5 @@ class UserController extends Controller
         $user->delete();
         return redirect('/users')->with('delete-success', true);
     }
+
 }
