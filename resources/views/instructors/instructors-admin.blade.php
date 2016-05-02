@@ -11,37 +11,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <h2 class="heading">Add New Instructor</h2>
-                    <form action="/admin/instructors" method="post">
-                        {{ csrf_field() }}
-                        <div class="container-fluid">
-                            @if (session('create-success'))
-                                <div class="alert alert-success" style="text-align: center">
-                                    Instructor was successfully created.
-                                </div>
-                            @endif
-                            @if (count($errors->createErrors) > 0)
-                                <div class="alert alert-danger" style="text-align: center">
-                                    {{ $errors->createErrors->first() }}
-                                </div>
-                            @endif
-                            <div class="form-group">
+                    <div class="create-form">
+                        <h2 class="heading">Add New Instructor</h2>
+                        <form action="/admin/instructors" method="post">
+                            {{ csrf_field() }}
+                            <div class="container-fluid">
+                                @if (session('create-success'))
+                                    <div class="alert alert-success" style="text-align: center">
+                                        Instructor was successfully created.
+                                    </div>
+                                @endif
+                                @if (count($errors->createErrors) > 0)
+                                    <div class="alert alert-danger" style="text-align: center">
+                                        {{ $errors->createErrors->first() }}
+                                    </div>
+                                @endif
                                 <label for="fname" class="sr-only">First Name</label>
                                 <input type="text" id="fname" name="fname" class="form-control" placeholder="First name" value="{{ old('fname') }}">
-                            </div>
-                            <div class="form-group">
                                 <label for="lname" class="sr-only">Last Name</label>
                                 <input type="text" id="lname" name="lname" class="form-control" placeholder="Last name" value="{{ old('lname') }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="sr-only">Phone</label>
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone" data-mask="9999999999" value="{{ old('phone') }}">
-                            </div>
-                            <div class="form-group">
+                                <label for="phone" class="sr-only">Phone Number</label>
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone number" data-mask="9999999999" value="{{ old('phone') }}">
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                     <br>
                 </div>
                 <div class="col-sm-offset-1 col-sm-7">
@@ -101,7 +95,7 @@
                                     </div>
                                 @endif
                                 <div class="form-group">
-                                    <label for="{{ $instructor->id }}_name" class="control-label col-sm-3">First Name</label>
+                                    <label for="{{ $instructor->id }}_fname" class="control-label col-sm-3">First Name</label>
                                     <div class="col-sm-9">
                                         <input type="text" id="{{ $instructor->id }}_fname" name="{{ $instructor->id }}_fname" class="form-control" placeholder="First name" value="@if(old($instructor->id.'_fname')){{ old($instructor->id.'_fname') }}@else{{ $instructor->fname }}@endif">
                                     </div>

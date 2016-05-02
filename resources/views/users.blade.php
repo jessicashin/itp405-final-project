@@ -11,50 +11,44 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <h2 class="heading">Create New User</h2>
-                    <form action="/admin/users" method="post">
-                        {{ csrf_field() }}
-                        <div class="container-fluid">
-                            @if (session('create-success'))
-                                <div class="alert alert-success" style="text-align: center">
-                                    User was successfully created.
-                                </div>
-                            @endif
-                            @if (count($errors->createErrors) > 0)
-                                <div class="alert alert-danger" style="text-align: center">
-                                    {{ $errors->createErrors->first() }}
-                                </div>
-                            @endif
-                            <div class="form-group">
+                    <div class="create-form">
+                        <h2 class="heading">Create New User</h2>
+                        <form action="/admin/users" method="post">
+                            {{ csrf_field() }}
+                            <div class="container-fluid">
+                                @if (session('create-success'))
+                                    <div class="alert alert-success" style="text-align: center">
+                                        User was successfully created.
+                                    </div>
+                                @endif
+                                @if (count($errors->createErrors) > 0)
+                                    <div class="alert alert-danger" style="text-align: center">
+                                        {{ $errors->createErrors->first() }}
+                                    </div>
+                                @endif
                                 <label for="name" class="sr-only">Full Name</label>
                                 <input type="text" id="name" name="name" class="form-control" placeholder="Full name" value="{{ old('name') }}">
-                            </div>
-                            <div class="form-group">
                                 <label for="username" class="sr-only">Username</label>
                                 <input type="text" id="username" name="username" class="form-control" placeholder="Username" value="{{ old('username') }}">
-                            </div>
-                            <div class="form-group">
                                 <label for="password" class="sr-only">Password</label>
                                 <input type="password" id="password" name="password" placeholder="Password" class="form-control">
-                            </div>
-                            <div class="form-group" style="margin-bottom: 5px">
                                 <label for="password_confirmation" class="sr-only">Confirm Password</label>
                                 <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" class="form-control">
+                                <div class="form-group checkbox" style="margin-bottom: 15px">
+                                    <label>
+                                        <input type="checkbox" id="admin" name="admin" @if (old('admin') == true) checked @endif> Admin Account
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
+                                </div>
                             </div>
-                            <div class="form-group checkbox" style="margin-bottom: 15px">
-                                <label>
-                                    <input type="checkbox" id="admin" name="admin" @if (old('admin') == true) checked @endif> Admin Account
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Create</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                     <br>
                 </div>
                 <div class="col-sm-offset-1 col-sm-7">
-                    <h2 class="heading">Existing Users</h2>
+                    <h2 class="heading">User Accounts</h2>
                     @if (session('edit-success'))
                         <div class="alert alert-success" style="text-align: center">
                             User account was successfully updated.
