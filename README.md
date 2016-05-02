@@ -23,7 +23,7 @@ Tables: `users`, `students`, `parent1s`, `parent2s`, `addresses`, `instructors`,
 
 Lookup tables: `states`, `titles`, `relationship_types`, `ethnicities`, `first_languages`, `course_sessions`, `schools`, `rooms`, `billing_types`, `payment_types`
 
-### To be implemented
+## To be implemented
 + Auto-populate registration form when `parent1` home phone and name matches one in database (parent1s with multiple students qualify for sibling discounts). Currently students can be saved to existing parent1s if the data matches, but the form does not auto-populate.
 + Create user interfaces for `Courses` and student `Enrollment` and `Billing`. Enrolling a student in a course should charge the tuition amount to that student's billing. From a student's billing, payments and other charges can be recorded and billing statements generated. Enrollment can be added from the student profile as well as from the course profile.
 + Maintain course sessions (e.g. Summer 2016) to easily manage current and upcoming courses
