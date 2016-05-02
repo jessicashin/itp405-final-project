@@ -7,7 +7,7 @@
     color: grey;
 }
 
-.modal-dialog {
+.edit-modal {
     max-width: 450px;
 }
 
@@ -21,4 +21,8 @@
 
 .modal-footer {
     margin-top: 10px;
+}
+
+.delete-text {
+    font-size: 20px;
 }

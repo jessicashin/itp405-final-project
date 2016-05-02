@@ -99,4 +99,10 @@ class UserController extends Controller
 
         return redirect('/users')->with('edit-success', true);
     }
+
+    public function destroy($id) {
+        $user = User::find($id);
+        $user->delete();
+        return redirect('/users')->with('delete-success', true);
+    }
 }
