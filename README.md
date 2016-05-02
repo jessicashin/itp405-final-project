@@ -1,5 +1,6 @@
 ####Jessica Shin &nbsp;|&nbsp; [ITP-405 Final Project](http://itpweb.herokuapp.com/assignments/405-final-project)
 # Laravel Student Records Database
+[![Build Status](https://travis-ci.org/jessicashin/itp405-final-project.svg?branch=master)](https://travis-ci.org/jessicashin/itp405-final-project)
 
 This site manages the student records of a tutoring and test prep institution. These records include contact and billing information as well as test scores and course enrollment. The users will include administrative staff and instructors.
 
