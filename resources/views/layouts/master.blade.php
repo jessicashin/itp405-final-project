@@ -34,7 +34,11 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/search">Search</a></li>
                     <li><a href="/register">Register</a></li>
-                    <li><a href="">Courses</a></li>
+                    @if (\Illuminate\Support\Facades\Auth::user()->admin == 1)
+                        <li><a href="/admin/users">Users</a></li>
+                    @else
+                        <li><a href="/courses">Courses</a></li>
+                    @endif
                     @if (\Illuminate\Support\Facades\Auth::user()->admin == 1)
                         <li><a href="/admin/users">Users</a></li>
                     @endif

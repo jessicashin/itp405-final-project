@@ -33,7 +33,7 @@ class UserController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
         if ($validator->fails()) {
-            return redirect('/users')
+            return redirect('/admin/users')
                 ->withErrors($validator, 'createErrors')
                 ->withInput();
         }
@@ -51,7 +51,7 @@ class UserController extends Controller
             'admin' => $admin,
         ]);
 
-        return redirect('/users')->with('create-success', true);
+        return redirect('/admin/users')->with('create-success', true);
     }
 
     public function update($id, Request $request) {
@@ -70,14 +70,14 @@ class UserController extends Controller
         if (!empty($request->input('current_password')) && !empty($request->input('new_password'))) {
             if (!Hash::check($request->input('current_password'), $user->password)) {
                 $validator->errors()->add('current_password', 'Current password is incorrect.');
-                return redirect('/users')
+                return redirect('/admin/users')
                     ->withErrors($validator, 'editErrors')
                     ->with('edit', $id)
                     ->withInput();
             }
         }
         if ($validator->fails()) {
-            return redirect('/users')
+            return redirect('/admin/users')
                 ->withErrors($validator, 'editErrors')
                 ->with('edit', $id)
                 ->withInput();
@@ -98,13 +98,13 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/users')->with('edit-success', true);
+        return redirect('/admin/users')->with('edit-success', true);
     }
 
     public function destroy($id) {
         $user = User::find($id);
         $user->delete();
-        return redirect('/users')->with('delete-success', true);
+        return redirect('/admin/users')->with('delete-success', true);
     }
 
 }
