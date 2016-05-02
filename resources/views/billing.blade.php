@@ -22,6 +22,12 @@
             </li>
         </ul>
 
+        <div style="margin-top: 50px">
+            <h2>TO BE IMPLEMENTED</h2>
+            <h3>Billing for {{$student->name()}}</h3>
+            <p style="font-size: 20px;">Enrollment will automatically charge the tuition of the course. You can also input miscellaneous charges such as tutoring charges.
+                Payments will also be recorded here, and billing statements are generated here.</p>
+        </div>
 
     </div>
 

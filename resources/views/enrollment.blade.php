@@ -22,6 +22,11 @@
             </li>
         </ul>
 
+        <div style="margin-top: 50px">
+            <h2>TO BE IMPLEMENTED</h2>
+            <h3>Enrollment for {{$student->name()}}</h3>
+            <p style="font-size: 20px;">The enrollment tab shows all current/upcoming/past enrollments in courses.</p>
+        </div>
 
     </div>
 

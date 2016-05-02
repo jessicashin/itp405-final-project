@@ -2,6 +2,8 @@
 # Laravel Student Records Database
 [![Build Status](https://travis-ci.org/jessicashin/itp405-final-project.svg?branch=master)](https://travis-ci.org/jessicashin/itp405-final-project)
 
+http://itp-srdb.herokuapp.com/search
+
 This site manages the student records of a tutoring and test prep institution. These records include contact and billing information as well as courses and enrollment. The users are administrative staff (not students).
 
 ## Accounts
