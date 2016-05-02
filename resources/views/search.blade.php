@@ -13,7 +13,7 @@
             <h2 class="search-form-heading">Search for a student</h2>
             <div class="form-group">
                 <label for="student" class="sr-only">Student Name or ID</label>
-                <select class="form-control combobox" id="student">
+                <select class="form-control combobox" id="student" name="student">
                     <option></option>
                     @foreach ($students as $student)
                         <option value="{{$student->id}}">{{$student->id}} {{$student->name()}}</option>

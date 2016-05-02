@@ -238,7 +238,7 @@ class StudentController extends Controller
             $parent2->student_id = $studentId;
             $parent2->save();
         }
-        return redirect('/register')->with('success', true);
+        return redirect('/students/' . $studentId);
     }
 
 

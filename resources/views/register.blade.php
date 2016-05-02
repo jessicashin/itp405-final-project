@@ -13,11 +13,6 @@
             <div class="container-fluid">
                 <h2 style="text-align: center;">Register New Student</h2>
                 <hr>
-                @if (session('success'))
-                    <div class="alert alert-success" style="text-align: center">
-                        Student was successfully registered.
-                    </div>
-                @endif
                 @if (count($errors) > 0)
                     <div class="alert alert-danger" style="text-align: center">
                         {{ $errors->first() }}
